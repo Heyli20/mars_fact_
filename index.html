@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Facts</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #ff6b6b, #f06595, #6a4c93);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        #fact-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #fact {
+            font-size: 1.5em;
+            color: white;
+            transition: opacity 0.5s ease;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="fact-container">
+        <p id="fact"></p>
+    </div>
+    <button id="new-fact-btn">Show Random Fact</button>
+    <script>
+        const facts = [
+            "Mars is the fourth planet from the Sun in our solar system.",
+            "Mars is often referred to as the 'Red Planet' due to its reddish appearance.",
+            "Mars has the largest volcano in the solar system, Olympus Mons, which is about 13.6 miles (22 kilometers) high.",
+            "The atmosphere of Mars is mostly carbon dioxide, with traces of nitrogen and argon.",
+            "Mars has two small moons, Phobos and Deimos, which are thought to be captured asteroids.",
+            "A day on Mars, known as a sol, is approximately 24.6 hours long.",
+            "Mars has the largest dust storms in the solar system, which can cover the entire planet and last for months.",
+            "Mars has a canyon system, Valles Marineris, that is over 2,500 miles (4,000 kilometers) long.",
+            "Mars' surface temperature can range from -195 degrees Fahrenheit (-125 degrees Celsius) in winter to 70 degrees Fahrenheit (20 degrees Celsius) in summer.",
+            "Evidence suggests that Mars once had liquid water on its surface and may still have water in the form of ice."
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const factElement = document.getElementById('fact');
+            const button = document.getElementById('new-fact-btn');
+
+            function showRandomFact() {
+                const randomIndex = Math.floor(Math.random() * facts.length);
+                factElement.style.opacity = 0;
+                setTimeout(() => {
+                    factElement.textContent = facts[randomIndex];
+                    factElement.style.opacity = 1;
+                }, 500);
+            }
+
+            button.addEventListener('click', showRandomFact);
+            showRandomFact(); // Show a fact on initial load
+        });
+    </script>
+</body>
+</html>
